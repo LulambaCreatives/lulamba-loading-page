@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="5; url=https://miguel4wdc.rf.gd" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lulamba Creatives | Loading...</title>
+  <style>
+    :root {
+      --primary-color: #00ffd0;
+      --text-color: #ffffff;
+      --bg-gradient: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .logo-img {
+      max-width: 160px;
+      height: auto;
+      margin-bottom: 15px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .logo-text {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: #cccccc;
+      height: 1.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #cccccc;
+      animation:
+        typing 3s steps(30, end),
+        blink-caret 0.75s step-end infinite;
+    }
+
+    .loader {
+      margin-top: 30px;
+      border: 5px solid rgba(255, 255, 255, 0.1);
+      border-top: 5px solid var(--primary-color);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 0.95rem;
+      color: #aaa;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(15px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #ccc }
+    }
+
+    @media (max-width: 600px) {
+      .logo-text {
+        font-size: 1.6rem;
+      }
+
+      .tagline {
+        font-size: 0.9rem;
+      }
+
+      .loader {
+        width: 45px;
+        height: 45px;
+      }
+
+      .message {
+        font-size: 0.85rem;
+      }
+
+      .logo-img {
+        max-width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="logo.png" alt="Lulamba Creatives Logo" class="logo-img" />
+  <div class="logo-text">Lulamba Creatives</div>
+  <div class="tagline">Innovate. Design. Inspire.</div>
+  <div class="loader"></div>
+  <div class="message">Preparing something amazing for you...</div>
+</body>
+</html>

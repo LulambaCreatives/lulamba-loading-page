@@ -11,112 +11,60 @@
       --text-color: #ffffff;
       --bg-gradient: linear-gradient(135deg, #0d0d0d, #1a1a1a);
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body {
-      height: 100%;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--bg-gradient);
-      color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      height: 100%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-gradient); color: var(--text-color);
+      display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
     }
-
-    .logo-img {
-      max-width: 160px;
-      height: auto;
-      margin-bottom: 15px;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .logo-text {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--primary-color);
-      letter-spacing: 2px;
-      margin-bottom: 5px;
-    }
-
+    .logo-img { max-width: 160px; margin-bottom: 15px; animation: fadeIn 1s ease-in-out; }
+    .logo-text { font-size: 2.2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 5px; }
     .tagline {
-      font-size: 1rem;
-      color: #cccccc;
-      height: 1.5rem;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid #cccccc;
-      animation:
-        typing 3s steps(30, end),
-        blink-caret 0.75s step-end infinite;
+      font-size: 1rem; color: #cccccc; height: 1.5rem; white-space: nowrap;
+      overflow: hidden; border-right: 2px solid #cccccc;
+      animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
     }
-
     .loader {
-      margin-top: 30px;
-      border: 5px solid rgba(255, 255, 255, 0.1);
-      border-top: 5px solid var(--primary-color);
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
+      margin-top: 30px; border: 5px solid rgba(255,255,255,0.1); border-top: 5px solid var(--primary-color);
+      border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite;
     }
-
-    .message {
-      margin-top: 20px;
-      font-size: 0.95rem;
-      color: #aaa;
-      animation: fadeIn 2s ease-in;
+    .message { margin-top: 20px; font-size: 0.95rem; color: #aaa; animation: fadeIn 2s ease-in; }
+    .names {
+      position: absolute; bottom: 40px; font-size: 1rem; color: #00ffd0; opacity: 0;
+      animation: pop 8s infinite;
     }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes fadeIn { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+    @keyframes typing { from { width: 0 } to { width: 100% } }
+    @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #ccc } }
+    @keyframes pop {
+      0%, 100% { opacity: 0; transform: scale(0.95); }
+      10% { opacity: 1; transform: scale(1); }
+      30% { opacity: 0; transform: scale(0.95); }
+      40% { opacity: 1; transform: scale(1); }
+      60% { opacity: 0; transform: scale(0.95); }
+      70% { opacity: 1; transform: scale(1); }
+      90% { opacity: 0; transform: scale(0.95); }
     }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(15px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: #ccc }
-    }
-
     @media (max-width: 600px) {
-      .logo-text {
-        font-size: 1.6rem;
-      }
-
-      .tagline {
-        font-size: 0.9rem;
-      }
-
-      .loader {
-        width: 45px;
-        height: 45px;
-      }
-
-      .message {
-        font-size: 0.85rem;
-      }
-
-      .logo-img {
-        max-width: 120px;
-      }
+      .logo-text { font-size: 1.6rem; }
+      .tagline { font-size: 0.9rem; }
+      .loader { width: 45px; height: 45px; }
+      .message { font-size: 0.85rem; }
+      .logo-img { max-width: 120px; }
     }
   </style>
+  <script>
+    let names = ["Stickie Fingers", "Marshal", "Cawas", "Danny West", "Kai", "Bebeko"];
+    let current = 0;
+    function cycleNames() {
+      const nameEl = document.getElementById("nameCycle");
+      nameEl.innerText = names[current];
+      current = (current + 1) % names.length;
+    }
+    setInterval(cycleNames, 2000);
+    window.onload = cycleNames;
+  </script>
 </head>
 <body>
   <img src="logo.png" alt="Lulamba Creatives Logo" class="logo-img" />
@@ -124,5 +72,6 @@
   <div class="tagline">Innovate. Design. Inspire.</div>
   <div class="loader"></div>
   <div class="message">Preparing something amazing for you...</div>
+  <div class="names" id="nameCycle"></div>
 </body>
 </html>

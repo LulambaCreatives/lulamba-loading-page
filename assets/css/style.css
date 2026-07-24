@@ -1,0 +1,34 @@
+/* assets/css/style.css
+   Split from original index.html. Reduced-motion support and responsive image handling included.
+*/
+:root{
+  --primary-color:#00ffd0;
+  --secondary-color:#0088ff;
+  --text-color:#ffffff;
+  --text-secondary:#cccccc;
+  --bg-dark:#0d0d0d;
+  --bg-light:#1a1a1a;
+  --bg-gradient:linear-gradient(135deg,var(--bg-dark),var(--bg-light));
+  --transition-speed:0.35s;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background:var(--bg-gradient);color:var(--text-color);display:flex;align-items:center;justify-content:center;text-align:center}
+canvas{position:fixed;inset:0;z-index:-2}
+.container{z-index:10;padding:28px;animation:containerEntry 1s ease-out;max-width:900px}
+@keyframes containerEntry{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:none}}
+.logo-img{max-width:160px;margin:0 auto 18px;display:block;filter:drop-shadow(0 0 20px rgba(0,255,208,0.5));}
+.logo-text{font-size:2rem;font-weight:700;background:linear-gradient(135deg,var(--primary-color),var(--secondary-color));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.tagline{font-size:1.05rem;color:var(--text-secondary);height:1.5rem;white-space:nowrap;overflow:hidden;border-right:3px solid var(--primary-color);margin-bottom:18px;animation:typing 4s steps(30,end) 1,blink-caret .75s step-end infinite}
+@keyframes typing{from{width:0}to{width:100%}}@keyframes blink-caret{50%{border-right-color:var(--primary-color)}from,to{border-right-color:transparent}}
+.loader{margin:12px auto;border:6px solid rgba(255,255,255,0.1);border-top:6px solid var(--primary-color);border-right:6px solid var(--secondary-color);border-radius:50%;width:70px;height:70px;animation:spin 1.5s linear infinite;box-shadow:0 0 30px rgba(0,255,208,0.4)}@keyframes spin{to{transform:rotate(360deg)}}
+.progress-bar{width:200px;height:6px;background:rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;margin:18px auto}
+.progress-bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--primary-color),var(--secondary-color));box-shadow:0 0 10px var(--primary-color);transition:width 400ms ease}
+.message{margin-top:12px;font-size:.95rem;color:var(--text-secondary);letter-spacing:.5px}
+.names{margin-top:20px;font-size:1.05rem;font-weight:600;color:var(--primary-color);min-height:30px}
+.controls{display:flex;gap:10px;justify-content:center;margin-top:20px}
+.controls button{width:45px;height:45px;border:2px solid var(--primary-color);border-radius:50%;background:rgba(0,255,208,0.08);color:var(--primary-color);cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:all var(--transition-speed) ease}
+.controls button:hover{transform:scale(1.08);box-shadow:0 0 18px rgba(0,255,208,0.2)}
+.controls .enter{width:auto;padding:0 14px;border-radius:999px}
+@media (max-width:600px){.logo-text{font-size:1.5rem}.tagline{font-size:.95rem;animation:typing 3s steps(25,end) 1,blink-caret .75s step-end infinite}.loader{width:55px;height:55px}.progress-bar{width:150px}}
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}

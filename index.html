@@ -1,444 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Lulamba Creatives | Loading...</title>
-  <meta name="description" content="Lulamba Creatives - Technology, Design and Innovation from Zambia.">
-  <meta name="theme-color" content="#00ffd0">
-  
-  <style>
-    :root {
-      --primary-color: #00ffd0;
-      --secondary-color: #0088ff;
-      --accent-color: #ff006e;
-      --text-color: #ffffff;
-      --text-secondary: #cccccc;
-      --bg-dark: #0d0d0d;
-      --bg-light: #1a1a1a;
-      --bg-gradient: linear-gradient(135deg, var(--bg-dark), var(--bg-light));
-      --transition-speed: 0.35s;
-    }
-    
-    * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
-    }
-    
-    html, body {
-      height: 100%;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--bg-gradient);
-      color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      overflow: hidden;
-      position: relative;
-    }
+  <meta name="description" content="Lulamba Creatives - Technology, Design and Innovation from Zambia." />
+  <meta name="theme-color" content="#00ffd0" />
 
-    /* Background Animations */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: -40%;
-      background:
-        radial-gradient(circle, var(--primary-color) 0%, transparent 35%),
-        radial-gradient(circle, var(--secondary-color) 0%, transparent 45%);
-      opacity: 0.15;
-      filter: blur(120px);
-      animation: ambient 15s infinite alternate;
-      z-index: -1;
-    }
+  <!-- Open Graph (basic) -->
+  <meta property="og:title" content="Lulamba Creatives" />
+  <meta property="og:description" content="Animated loading page for Lulamba Creatives" />
+  <meta property="og:type" content="website" />
 
-    @keyframes ambient {
-      from { transform: translate(-10%, -10%); }
-      to { transform: translate(20%, 20%); }
-    }
-
-    /* Particle Canvas */
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -2;
-    }
-
-    /* Main Container */
-    .container {
-      z-index: 10;
-      animation: containerEntry 1s ease-out;
-    }
-
-    @keyframes containerEntry {
-      from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    /* Logo Styling */
-    .logo-img {
-      max-width: 160px;
-      margin-bottom: 20px;
-      animation: 
-        fadeIn 1s ease-in-out,
-        float 3s ease-in-out infinite;
-      filter: drop-shadow(0 0 20px rgba(0, 255, 208, 0.5));
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-    }
-
-    .logo-text {
-      font-size: 2.5rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 8px;
-      animation: logoGlow 2s ease-in-out infinite;
-    }
-
-    @keyframes logoGlow {
-      0%, 100% {
-        text-shadow: 0 0 0px transparent;
-        filter: drop-shadow(0 0 10px rgba(0, 255, 208, 0.3));
-      }
-      50% {
-        filter: drop-shadow(0 0 20px rgba(0, 255, 208, 0.6));
-      }
-    }
-
-    /* Tagline */
-    .tagline {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      height: 1.5rem;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 3px solid var(--primary-color);
-      margin-bottom: 25px;
-      animation: 
-        typing 4s steps(30, end) once,
-        blink-caret 0.75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-right-color: transparent; }
-      50% { border-right-color: var(--primary-color); }
-    }
-
-    /* Loader */
-    .loader {
-      margin-top: 20px;
-      margin-bottom: 25px;
-      border: 6px solid rgba(255, 255, 255, 0.1);
-      border-top: 6px solid var(--primary-color);
-      border-right: 6px solid var(--secondary-color);
-      border-radius: 50%;
-      width: 70px;
-      height: 70px;
-      animation: spin 1.5s linear infinite;
-      box-shadow: 0 0 30px rgba(0, 255, 208, 0.4);
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Progress Bar */
-    .progress-bar {
-      width: 200px;
-      height: 4px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      overflow: hidden;
-      margin: 20px auto;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-
-    .progress-bar span {
-      display: block;
-      height: 100%;
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-      animation: progressLoad 5s ease-out forwards;
-      box-shadow: 0 0 10px var(--primary-color);
-    }
-
-    @keyframes progressLoad {
-      from { width: 0%; }
-      to { width: 100%; }
-    }
-
-    /* Message */
-    .message {
-      margin-top: 15px;
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      animation: fadeIn 2s ease-in;
-      letter-spacing: 0.5px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Names Cycling */
-    .names {
-      margin-top: 25px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--primary-color);
-      min-height: 30px;
-      animation: nameFade 1.8s ease-in-out infinite;
-    }
-
-    @keyframes nameFade {
-      0%, 100% { opacity: 0; transform: scale(0.9); }
-      10%, 90% { opacity: 1; transform: scale(1); }
-    }
-
-    /* Controls */
-    .controls {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-top: 25px;
-      z-index: 20;
-    }
-
-    button {
-      width: 45px;
-      height: 45px;
-      border: 2px solid var(--primary-color);
-      border-radius: 50%;
-      background: rgba(0, 255, 208, 0.1);
-      color: var(--primary-color);
-      cursor: pointer;
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition-speed) ease;
-      backdrop-filter: blur(10px);
-    }
-
-    button:hover {
-      background: rgba(0, 255, 208, 0.2);
-      transform: scale(1.15);
-      box-shadow: 0 0 20px rgba(0, 255, 208, 0.5);
-    }
-
-    button:active {
-      transform: scale(0.95);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 600px) {
-      .logo-text { font-size: 1.8rem; }
-      .tagline { 
-        font-size: 0.95rem; 
-        animation: typing 3s steps(25, end) once, blink-caret 0.75s step-end infinite;
-      }
-      .loader { width: 55px; height: 55px; }
-      .message { font-size: 0.85rem; }
-      .logo-img { max-width: 120px; }
-      .names { font-size: 0.95rem; }
-      .progress-bar { width: 150px; }
-      .controls { gap: 8px; }
-      button { width: 40px; height: 40px; font-size: 1.1rem; }
-    }
-
-    /* Loading text animation */
-    .message::after {
-      content: '';
-      animation: dots 1.5s steps(4, end) infinite;
-    }
-
-    @keyframes dots {
-      0%, 20% { content: ''; }
-      40% { content: '.'; }
-      60% { content: '..'; }
-      80%, 100% { content: '...'; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
-  <canvas id="particleCanvas"></canvas>
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
 
-  <div class="container">
-    <img src="logo.png" alt="Lulamba Creatives Logo" class="logo-img" onerror="this.style.display='none'" />
-    <div class="logo-text">Lulamba Creatives</div>
-    <div class="tagline">Innovate. Design. Inspire.</div>
-    
-    <div class="loader"></div>
-    
-    <div class="progress-bar">
-      <span></span>
+  <main class="container" role="main">
+    <picture>
+      <source type="image/webp" srcset="assets/img/logo-256.webp 256w" sizes="(max-width:600px) 256px, 256px">
+      <img src="logo.png" alt="Lulamba Creatives logo" class="logo-img" decoding="async" loading="lazy">
+    </picture>
+
+    <h1 class="logo-text">Lulamba Creatives</h1>
+    <p class="tagline" id="tagline">Innovate. Design. Inspire.</p>
+
+    <div class="loader" aria-hidden="true"></div>
+
+    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <span id="progressFill"></span>
     </div>
-    
-    <div class="message">Preparing something amazing for you</div>
-    
-    <div class="names" id="nameCycle">Stickie Fingers</div>
 
-    <div class="controls">
-      <button id="themeToggle" title="Toggle Theme" aria-label="Toggle Theme">🌙</button>
-      <button id="soundToggle" title="Toggle Sound" aria-label="Toggle Sound">🔊</button>
+    <p class="message" id="message">Preparing something amazing for you</p>
+
+    <div class="names" id="nameCycle" aria-live="polite">Stickie Fingers</div>
+
+    <div class="controls" role="toolbar" aria-label="Controls">
+      <button id="themeToggle" title="Toggle Theme" aria-pressed="false" aria-label="Toggle Theme">🌙</button>
+      <button id="soundToggle" title="Toggle Sound" aria-pressed="false" aria-label="Toggle Sound">🔊</button>
+      <button id="enterSite" class="enter" disabled aria-disabled="true">Enter site</button>
     </div>
-  </div>
+  </main>
 
-  <script>
-    // ==================== REDIRECT ====================
-    setTimeout(() => {
-      window.location.href = "https://miguel4wdc.rf.gd";
-    }, 5000);
-
-    // ==================== THEME TOGGLE ====================
-    const themeToggle = document.getElementById('themeToggle');
-    const htmlElement = document.documentElement;
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-
-    function setTheme(theme) {
-      if (theme === 'light') {
-        document.body.style.background = 'linear-gradient(135deg, #f5f5f5, #e0e0e0)';
-        document.documentElement.style.setProperty('--text-color', '#111111');
-        document.documentElement.style.setProperty('--text-secondary', '#555555');
-        themeToggle.textContent = '☀️';
-        localStorage.setItem('theme', 'light');
-      } else {
-        document.body.style.background = 'var(--bg-gradient)';
-        document.documentElement.style.setProperty('--text-color', '#ffffff');
-        document.documentElement.style.setProperty('--text-secondary', '#cccccc');
-        themeToggle.textContent = '🌙';
-        localStorage.setItem('theme', 'dark');
-      }
-    }
-
-    setTheme(savedTheme);
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = localStorage.getItem('theme') || 'dark';
-      setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-    });
-
-    // ==================== SOUND TOGGLE ====================
-    const soundToggle = document.getElementById('soundToggle');
-    let isMuted = localStorage.getItem('soundMuted') === 'true';
-    soundToggle.textContent = isMuted ? '🔇' : '🔊';
-
-    soundToggle.addEventListener('click', () => {
-      isMuted = !isMuted;
-      soundToggle.textContent = isMuted ? '🔇' : '🔊';
-      localStorage.setItem('soundMuted', isMuted);
-    });
-
-    // ==================== NAMES CYCLING ====================
-    const people = ["Stickie Fingers", "Marshal", "Cawas", "Danny West", "Kai", "Bebeko"];
-    let nameIndex = 0;
-
-    setInterval(() => {
-      const nameEl = document.getElementById('nameCycle');
-      nameEl.style.animation = 'none';
-      setTimeout(() => {
-        nameEl.innerText = people[nameIndex];
-        nameEl.style.animation = 'nameFade 1.8s ease-in-out infinite';
-        nameIndex = (nameIndex + 1) % people.length;
-      }, 10);
-    }, 2000);
-
-    // ==================== PARTICLE ANIMATION ====================
-    const canvas = document.getElementById('particleCanvas');
-    const ctx = canvas.getContext('2d');
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    let particles = [];
-    const particleCount = 80;
-
-    function createParticles() {
-      particles = [];
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * 2 + 0.5,
-          speed: Math.random() * 1 + 0.3,
-          opacity: Math.random() * 0.5 + 0.2,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5
-        });
-      }
-    }
-    createParticles();
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      particles.forEach(p => {
-        p.y -= p.speed;
-        p.x += p.vx;
-
-        if (p.y < 0) p.y = canvas.height;
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 255, 208, ${p.opacity})`;
-        ctx.fill();
-
-        // Draw connecting lines to nearby particles
-        particles.forEach(other => {
-          const dx = p.x - other.x;
-          const dy = p.y - other.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 100) {
-            ctx.strokeStyle = `rgba(0, 255, 208, ${0.1 * (1 - distance / 100)})`;
-            ctx.lineWidth = 0.5;
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(other.x, other.y);
-            ctx.stroke();
-          }
-        });
-      });
-
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-
-    // ==================== PERFORMANCE OPTIMIZATION ====================
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        cancelAnimationFrame(animateParticles);
-      } else {
-        animateParticles();
-      }
-    });
-  </script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
